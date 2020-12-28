@@ -48,10 +48,10 @@ export default function ButtonAppBar() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <ul className="navbar-nav mr-auto">
             <Link to={'/AffBeer'} className="nav-link">
-              <Icon className="fas fa-beer" />
+              <IconButton className="fas fa-beer" />
             </Link>
             <Link to={'/about'} className="nav-link">
-              <Icon className="fas fa-info-circle" />
+              <IconButton className="fas fa-info-circle" />
             </Link>
           </ul>
         </nav>
