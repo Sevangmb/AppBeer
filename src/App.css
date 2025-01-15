@@ -1,0 +1,80 @@
+/* src/App.css */
+
+/* Main layout styles */
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Typography styles */
+h1, h2, h3 {
+  font-family: 'Lato', sans-serif;
+  color: #2c3e50;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0 0 1em;
+}
+
+/* Reusable component styles */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.center-text {
+  text-align: center;
+}
+```
+
+Now, update the `App.js` file to import this new CSS file:
+
+```javascript
+// src/App.js
+
+import React, { Component } from 'react';
+import Menu from './components/Menu';
+import './App.css';  // Import the App.css file
+
+class App extends Component {
+  render() {
+    return (
+      <div className="container">
+        <Menu />
+      </div>
+    );
+  }
+}
+
+export default App;
