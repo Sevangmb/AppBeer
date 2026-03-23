@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm start:*)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill:*)",
+      "Bash(kill -9 12332)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(find . -maxdepth 2 -name webpack* -o -name .babelrc* -o -name react-scripts*)",
+      "Bash(npm install:*)",
+      "Bash(xargs kill:*)",
+      "Bash(curl -s http://localhost:3000/static/js/bundle.js)",
+      "Bash(pkill -f \"node.*react-scripts\")",
+      "Bash(NODE_OPTIONS=--openssl-legacy-provider npm start)"
+    ]
+  }
+}

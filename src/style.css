@@ -1,3 +1,14 @@
-h1, p {
-  font-family: Lato;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+* {
+  font-family: Lato, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+  min-height: 100vh;
+}
+
+h1, h2, h3, p {
+  font-family: Lato, sans-serif;
 }

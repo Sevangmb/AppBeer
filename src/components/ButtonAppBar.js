@@ -2,69 +2,76 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import { BrowserRouter as Router, Switch, Route, Link as RouterLink } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import AffBeer from './AffBeer';
-import { loadCSS } from 'fg-loadcss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  title: {
+    flexGrow: 1,
+    fontWeight: 700,
+    fontSize: '1.8rem',
+    letterSpacing: 2,
+  },
+  navbar: {
+    marginBottom: theme.spacing(3),
+  },
+  navButton: {
+    marginLeft: theme.spacing(2),
+    color: '#fff',
+    fontWeight: 600,
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    },
+  },
+  content: {
+    flexGrow: 1,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
 }));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
 
-  React.useEffect(() => {
-    const node = loadCSS(
-      'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
-      document.querySelector('#font-awesome-css'),
-    );
-
-    return () => {
-      node.parentNode.removeChild(node);
-    };
-  }, []);
-
   return (
-        <Router>
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
+    <Router>
+      <div className={classes.root}>
+        <AppBar position="static" className={classes.navbar}>
+          <Toolbar>
+            <Typography variant="h5" className={classes.title} component={RouterLink} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              🍺 BEER WORLD
+            </Typography>
+            <Button color="inherit" component={RouterLink} to="/" className={classes.navButton}>
+              Accueil
+            </Button>
+            <Button color="inherit" component={RouterLink} to="/AffBeer" className={classes.navButton}>
+              Bières
+            </Button>
+            <Button color="inherit" component={RouterLink} to="/about" className={classes.navButton}>
+              À propos
+            </Button>
+          </Toolbar>
+        </AppBar>
 
-          <IconButton edge="start" className={classes.menuButton }>
-            <Link to={'/'} className="nav-link">
-              <MenuIcon />
-            </Link>
-          </IconButton>
-
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-            <Link to={'/AffBeer'} className="nav-link">
-              <IconButton className="fas fa-beer" />
-            </Link>
-            <Link to={'/about'} className="nav-link">
-              <IconButton className="fas fa-info-circle" />
-            </Link>
-          </ul>
-        </nav>
-
-        </Toolbar>
-      </AppBar>
-
+        <Container maxWidth="lg" className={classes.content}>
           <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/AffBeer' component={AffBeer} />
-              <Route path='/about' component={About} />
+            <Route exact path='/' component={Home} />
+            <Route path='/AffBeer' component={AffBeer} />
+            <Route path='/about' component={About} />
           </Switch>
-    </div>
-          </Router>
+        </Container>
+      </div>
+    </Router>
   );
 }
